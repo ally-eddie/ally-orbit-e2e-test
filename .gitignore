@@ -1,0 +1,13 @@
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+tests/test-config.local.ts
+
+# Test data
+tests/data/test.data.ts
+
+# Test configs with sensitive data
+tests/config/auth.config.ts
