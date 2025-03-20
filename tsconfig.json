@@ -5,11 +5,12 @@
     "baseUrl": "./",
     "paths": {
       "@utils/*": ["tests/utils/*"],
-      "@config/*": ["tests/config/*"]
+      "@config/*": ["tests/configs/*"]
     },
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node"
   },
   "include": ["tests/**/*"],
   "exclude": ["node_modules"]

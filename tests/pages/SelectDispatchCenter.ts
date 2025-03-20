@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test';
-import { authConfig } from '../config/auth.config';
+import { authConfig } from '../configs/auth.config';
 
 export class SelectDispatchCenterPage {
   constructor(private page: Page) {}

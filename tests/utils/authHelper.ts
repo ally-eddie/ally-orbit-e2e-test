@@ -1,5 +1,5 @@
 import { Page, expect } from '@playwright/test';
-import { config } from '../config/test.config';
+import { config } from '../configs/test.config';
 import { LoginPage } from '../pages/LoginPage';
 import { SelectOrganizationPage } from '../pages/SelectOrganizationPage';
 import { SelectDispatchCenterPage } from '../pages/SelectDispatchCenter';

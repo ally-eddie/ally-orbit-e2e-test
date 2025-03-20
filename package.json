@@ -10,9 +10,10 @@
   "devDependencies": {
     "@playwright/test": "^1.51.1",
     "@types/node": "^22.13.10",
-    "@types/xlsx": "^0.0.36"
+    "@types/xlsx": "^0.0.35"
   },
   "dependencies": {
+    "dayjs": "^1.11.13",
     "xlsx": "^0.18.5"
   }
 }
