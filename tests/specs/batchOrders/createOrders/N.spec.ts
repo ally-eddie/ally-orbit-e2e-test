@@ -1,19 +1,17 @@
 import { test } from '@playwright/test';
-import { login } from '@utils/authHelper';
 import path from 'path';
 import fs from 'fs';
 import * as XLSX from 'xlsx';
 import dayjs from 'dayjs';
+import { baseConfig } from '@configs/index';
 
 const customerOrderType = 'N';
 
 test.describe(`訂單功能 - ${customerOrderType} 類型`, () => {
   test(`使用者可以成功創建 ${customerOrderType} 類型訂單`, async ({ page }) => {
     // 动态导入配置    
-    const { config } = require(`../../../configs/batchOrders/createOrders/${customerOrderType}`);
-    await login(page);
-    await page.getByText('客戶訂單').click();    
-    await page.locator('a[href="/uploadOrders"] p:has-text("新增訂單")').click();
+    const { config } = require(`@configs/batchOrders/createOrders/${customerOrderType}`);    
+    await page.goto(`${baseConfig.baseUrl}/uploadOrders` );    
     await page.waitForSelector('button:has-text("上傳訂單")');
     await page.locator('button:has-text("上傳訂單")').click();
     await page.waitForSelector('div.MuiDialog-container p:has-text("上傳訂單")', { state: 'visible' });

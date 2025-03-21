@@ -5,8 +5,7 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 tests/test-config.local.ts
-tests/testFiles/
-/.DS_Store  
+.DS_Store  
 # Test data
 tests/data/test.data.ts
 # Test configs with sensitive data

@@ -33,16 +33,21 @@ export default defineConfig({
   },
 
   /* Configure projects for major browsers */
-  projects: [
+  projects: [  
     {
       name: 'login',
-      testMatch: 'specs/auth/login.spec.ts',
+      testMatch: /.*login\.spec\.ts$/,
       use: { ...devices['Desktop Chrome'] },
+    },  
+    {
+      name: 'afterLogin',      
+      use: { ...devices['Desktop Chrome'], 
+        storageState: 'storageState/login.json',
+       },
+       dependencies: ['login'],      
+       testMatch: /^(?!.*login\.spec\.ts$).*\.spec\.ts$/,
     },
-    // {
-    //   name: 'chromium',
-    //   use: { ...devices['Desktop Chrome'] },
-    // },
+ 
 
     // {
     //   name: 'firefox',
@@ -81,6 +86,4 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-
-  testIgnore: ['**/.gitignore'],
 });
