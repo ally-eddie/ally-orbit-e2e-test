@@ -6,8 +6,8 @@ node_modules/
 /playwright/.cache/
 tests/test-config.local.ts
 .DS_Store  
-# Test data
-tests/data/test.data.ts
+# ignore Modified files in TestFiles
+**/Modified/**
 # Test configs with sensitive data
 tests/config/auth.config.ts
 

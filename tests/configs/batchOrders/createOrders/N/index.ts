@@ -15,6 +15,6 @@ export const config = {
   autoModifyColumns: [
     { name: '預計出貨日期', value: getDateFromToday(1) },
     { name: '指定日期', value: getDateFromToday(2) },
-    { name: '出貨單號', value: addSuffix('555') }
+    { name: '出貨單號', value: addSuffix('666') }
   ]
 }; 

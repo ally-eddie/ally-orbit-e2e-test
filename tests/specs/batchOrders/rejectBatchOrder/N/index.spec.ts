@@ -1,7 +1,6 @@
 import { test } from '@playwright/test';
-import path from 'path';
-import fs from 'fs';
 import { baseConfig } from '@configs/index';
+import { getLatestBatchOrderFileName } from '@utils/index';
 
 const customerOrderType = 'N';
 
@@ -13,15 +12,8 @@ test.describe('批量作廢訂單', () => {
     // 获取 searchKey 或最新文件名
     let searchKey = config.searchKey;
     if (!searchKey) {
-      const directoryPath = path.resolve(__dirname, `../../../../testFiles/batchOrders/createOrders/${customerOrderType}/Modified`);
-      const files = fs.readdirSync(directoryPath);
-      const xlsxFiles = files.filter(file => file.endsWith('.xlsx'));
-      if (xlsxFiles.length === 0) {
-        throw new Error('No .xlsx files found in the directory');
-      }
-      // 获取最新文件名
-      xlsxFiles.sort((a, b) => fs.statSync(path.join(directoryPath, b)).mtime.getTime() - fs.statSync(path.join(directoryPath, a)).mtime.getTime());
-      searchKey = xlsxFiles[0];
+      const fileName = getLatestBatchOrderFileName(customerOrderType);
+      searchKey = fileName;      
     }    
     // 在输入框中输入 searchKey
     await page.fill('input[name="searchKey"]', searchKey);

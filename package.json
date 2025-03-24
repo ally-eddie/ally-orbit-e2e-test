@@ -2,7 +2,9 @@
   "name": "e2e",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "cleanModifiedFiles": "find tests/testFiles -type f -path '*/Modified/*' -exec rm -f {} +"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
