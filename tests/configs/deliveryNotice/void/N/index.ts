@@ -1,7 +1,6 @@
 export const config = {
     deliveryNoticesQuery: {
         searchKey: '',
-        customerOrderType: 'N',
-        orderStatus: "Accepted"
+        status: ['Created', 'Confirmed', 'CheckedIn', 'OutForDelivery', 'Delivered']
     }
 };

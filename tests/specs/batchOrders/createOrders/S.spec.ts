@@ -20,7 +20,7 @@ test.describe(`訂單功能 - ${customerOrderType} 類型`, () => {
     const files = fs.readdirSync(directoryPath);
     const xlsxFiles = files.filter(file => file.endsWith('.xlsx'));
     if (xlsxFiles.length === 0) {
-      throw new Error('No .xlsx files found in the directory');
+      throw new Error('No original .xlsx files found in the directory');
     }
     const filePath = path.join(directoryPath, xlsxFiles[0]);
 

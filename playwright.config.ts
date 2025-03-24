@@ -53,7 +53,7 @@ export default defineConfig({
         storageState: 'storageState/login.json',
       },
       dependencies: ['login'],     
-      testMatch: /.*S.*\.spec\.ts$/,
+      testMatch: /.*S\/.*\.spec\.ts$/, 
     },
     {
       name: 'N',
@@ -61,7 +61,7 @@ export default defineConfig({
         storageState: 'storageState/login.json',
       },
       dependencies: ['login'],     
-      testMatch: /.*N.*\.spec\.ts$/,
+      testMatch: /.*N\/.*\.spec\.ts$/, 
     },
  
     // {
