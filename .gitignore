@@ -10,4 +10,5 @@ tests/test-config.local.ts
 **/Modified/**
 # Test configs with sensitive data
 tests/config/auth.config.ts
+storageState/
 

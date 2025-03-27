@@ -5,18 +5,18 @@ import * as XLSX from 'xlsx';
 import dayjs from 'dayjs';
 import { baseConfig } from '@configs/index';
 
-const customerOrderType = 'N';
+const customerOrderType = 'S';
 
 test.describe(`訂單功能 - ${customerOrderType} 類型`, () => {
   test(`使用者可以成功創建 ${customerOrderType} 類型訂單`, async ({ page }) => {
-    // 动态导入配置    
+    // 动态导入配置
     const { config } = require(`@configs/batchOrders/createOrders/${customerOrderType}`);    
-    await page.goto(`${baseConfig.baseUrl}/uploadOrders` );    
+    await page.goto(`${baseConfig.baseUrl}/uploadOrders` );
     await page.waitForSelector('button:has-text("上傳訂單")');
     await page.locator('button:has-text("上傳訂單")').click();
     await page.waitForSelector('div.MuiDialog-container p:has-text("上傳訂單")', { state: 'visible' });
 
-    const directoryPath = path.resolve(__dirname, `../../../testFiles/batchOrders/createOrders/${customerOrderType}`);
+    const directoryPath = path.resolve(__dirname, `../../../../testFiles/batchOrders/createOrders/${customerOrderType}`);
     const files = fs.readdirSync(directoryPath);
     const xlsxFiles = files.filter(file => file.endsWith('.xlsx'));
     if (xlsxFiles.length === 0) {
@@ -26,10 +26,7 @@ test.describe(`訂單功能 - ${customerOrderType} 類型`, () => {
 
     const workbook = XLSX.readFile(filePath);
     const sheetName = workbook.SheetNames[0];
-    const worksheet = workbook.Sheets[sheetName];    
-
-    const createdDate = dayjs().format('YYYYMMDD_HHmm');
-
+    const worksheet = workbook.Sheets[sheetName];        
     const range = XLSX.utils.decode_range(worksheet['!ref']!);
     const columnIndices: Record<string, number> = {};
 
@@ -40,6 +37,7 @@ test.describe(`訂單功能 - ${customerOrderType} 類型`, () => {
         columnIndices[cell.v] = C;
       }
     }    
+
     console.log('修改以下欄位');
     for (let R = range.s.r + 1; R <= range.e.r; ++R) {
       console.log(`Row: ${R}`);
@@ -55,20 +53,20 @@ test.describe(`訂單功能 - ${customerOrderType} 類型`, () => {
           }
         }
       }
-    }     
-
-    const modifiedDirPath = path.resolve(__dirname, `../../../testFiles/batchOrders/createOrders/${customerOrderType}/Modified`);
+    }   
+    
+    const modifiedDirPath = path.resolve(__dirname, `../../../../testFiles/batchOrders/createOrders/${customerOrderType}/Modified`);
     if (!fs.existsSync(modifiedDirPath)) {
       fs.mkdirSync(modifiedDirPath, { recursive: true });
     }
-
+    const createdDate = dayjs().format('YYYYMMDD_HHmm');
     const modifiedFilePath = path.join(modifiedDirPath, `${customerOrderType}-${createdDate}.xlsx`);
     XLSX.writeFile(workbook, modifiedFilePath);
     await page.setInputFiles('input[type="file"]', modifiedFilePath);
 
-    if (!config.keepUploadFile) {
-      fs.unlinkSync(modifiedFilePath);
-    }
+    // if (!config.keepUploadFile) {
+    //   fs.unlinkSync(modifiedFilePath);
+    // }
 
     await page.locator('div.MuiDialog-container button:has-text("上傳")').click();
     await page.waitForTimeout(10000);
