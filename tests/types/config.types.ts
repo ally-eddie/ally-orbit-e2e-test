@@ -12,8 +12,7 @@ export interface DispatchCenter {
 }
 
 export interface TestConfig {  
-  baseUrl: string;
-  apiBaseUrl: string;
+  baseUrl: string;  
   credentials: Credentials;  
   organization: Organization;
   dispatchCenter: DispatchCenter;
