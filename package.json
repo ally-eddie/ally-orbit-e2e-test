@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "cleanModifiedFiles": "find tests/testFiles -type f -path '*/Modified/*' -exec rm -f {} +"
+    "cleanModifiedFiles": "find tests/testFiles -type f -path '*/Modified/*' -exec rm -f {} +",    
+    "create-new-order-type": "node scripts/addNewOrderTypeFiles.ts"
   },
   "keywords": [],
   "author": "",
