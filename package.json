@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "cleanModifiedFiles": "find tests/testFiles -type f -path '*/Modified/*' -exec rm -f {} +",    
-    "create-new-order-type": "node scripts/addNewOrderTypeFiles.ts"
+    "addNewOrderType": "node scripts/addNewOrderTypeFilesFromSFolder.ts"
   },
   "keywords": [],
   "author": "",

@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { baseConfig } from '@configs/index';
 import { stringify, getRowColumnValueFromLatestBatchOrderFile } from '@utils/index';
 
-const customerOrderType = 'S';
+const customerOrderType = 'E';
 
 test.describe('拆分轉運單', () => {
     test('可以拆分轉運單', async ({ page, context }) => {
