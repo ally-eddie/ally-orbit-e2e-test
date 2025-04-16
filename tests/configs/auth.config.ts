@@ -3,7 +3,7 @@ import { Credentials, Organization } from '../types/config.types';
 export const authConfig = {
   credentials: {
     account: 'eddie@allytransport.com',
-    password: 'Hiawp0506'
+    password: '1234qwer'
   } as Credentials,
   organization: {
     name: 'Ally Transport'

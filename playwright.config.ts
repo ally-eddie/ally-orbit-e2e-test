@@ -63,6 +63,22 @@ export default defineConfig({
       dependencies: ['login'],     
       testMatch: /.*N\/.*\.spec\.ts$/, 
     },
+    {
+      name: 'E',
+      use: { ...devices['Desktop Chrome'], 
+        storageState: 'storageState/login.json',
+      },
+      dependencies: ['login'],     
+      testMatch: /.*E\/.*\.spec\.ts$/, 
+    },
+    {
+      name: 'PS',
+      use: { ...devices['Desktop Chrome'], 
+        storageState: 'storageState/login.json',
+      },
+      dependencies: ['login'],     
+      testMatch: /.*PS\/.*\.spec\.ts$/, 
+    },
  
     // {
     //   name: 'firefox',
