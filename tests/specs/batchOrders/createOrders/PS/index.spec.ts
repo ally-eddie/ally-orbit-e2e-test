@@ -62,13 +62,13 @@ test.describe(`訂單功能 - ${customerOrderType} 類型`, () => {
     const createdDate = dayjs().format('YYYYMMDD_HHmm');
     const modifiedFilePath = path.join(modifiedDirPath, `${customerOrderType}-${createdDate}.xlsx`);
     XLSX.writeFile(workbook, modifiedFilePath);
-    await page.setInputFiles('input[type="file"]', modifiedFilePath);
-
-    // if (!config.keepUploadFile) {
-    //   fs.unlinkSync(modifiedFilePath);
-    // }
+    await page.setInputFiles('input[type="file"]', modifiedFilePath);    
 
     await page.locator('div.MuiDialog-container button:has-text("上傳")').click();
     await page.waitForTimeout(10000);
+
+    if (!config.keepUploadFile) {
+      fs.unlinkSync(modifiedFilePath);
+    }
   });
 }); 

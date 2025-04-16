@@ -64,11 +64,11 @@ test.describe(`訂單功能 - ${customerOrderType} 類型`, () => {
     XLSX.writeFile(workbook, modifiedFilePath);
     await page.setInputFiles('input[type="file"]', modifiedFilePath);
 
+    await page.locator('div.MuiDialog-container button:has-text("上傳")').click();
+    await page.waitForTimeout(10000);
+    
     if (!config.keepUploadFile) {
       fs.unlinkSync(modifiedFilePath);
     }
-
-    await page.locator('div.MuiDialog-container button:has-text("上傳")').click();
-    await page.waitForTimeout(10000);
   });
 }); 

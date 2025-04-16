@@ -4,8 +4,8 @@ import { getLatestBatchOrderFileName } from '@utils/index';
 
 const customerOrderType = 'S';
 
-test.describe('批量拒絕訂單', () => {
-  test('可以拒絕訂單', async ({ page }) => {
+test.describe('批量作廢訂單', () => {
+  test('可以作廢訂單', async ({ page }) => {
     await page.goto(`${baseConfig.baseUrl}/uploadOrders`);    
     // 动态导入配置
     const { config } = require(`@configs/batchOrders/rejectBatchOrder/${customerOrderType}`);    

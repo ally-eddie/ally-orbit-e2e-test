@@ -5,7 +5,7 @@ import { stringify, getRowColumnValueFromLatestBatchOrderFile } from '@utils/ind
 const customerOrderType = 'S';
 
 test.describe('拒絕訂單', () => {
-    test('可以拒絕訂單', async ({ page, context }) => {
+    test('可以作廢訂單', async ({ page, context }) => {
     const { config: { ordersQuery } } = require(`@configs/order/reject/${customerOrderType}`);        
     if (!ordersQuery.searchKey) {
       ordersQuery.searchKey = getRowColumnValueFromLatestBatchOrderFile(customerOrderType, '出貨單號');
