@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { baseConfig } from '@configs/index';
 import { stringify, getRowColumnValueFromLatestBatchOrderFile } from '@utils/index';
 
-const customerOrderType = 'N';
+const customerOrderType= 'RA';
 
 test.describe('改成轉運單', () => {
     test('可以改成轉運單', async ({ page, context }) => {
@@ -25,13 +25,10 @@ test.describe('改成轉運單', () => {
     await deliveryNoticePage.click('label:has-text("轉運倉名稱") + div > div[role="combobox"]');    
     await deliveryNoticePage.waitForSelector('#menu-transportWarehouseName', { state: 'visible' });
     (await deliveryNoticePage.$('#menu-transportWarehouseName li:first-child')).click();    
-    await page.waitForTimeout(1000);     
     (await deliveryNoticePage.waitForSelector('input[name="firstTransportShipmentName"]', { state: 'visible' })).click();
     await deliveryNoticePage.click('div[role="presentation"] .MuiAutocomplete-listbox li:first-child');     
-    await page.waitForTimeout(1000);     
     (await deliveryNoticePage.waitForSelector('input[name="lastTransportShipmentName"]', { state: 'visible' })).click();
     await deliveryNoticePage.click('div[role="presentation"] .MuiAutocomplete-listbox li:first-child');
-    await page.waitForTimeout(1000);     
     await deliveryNoticePage.locator('div.MuiDialog-container button:has-text("確認改為轉運")').click();    
     await deliveryNoticePage.waitForTimeout(3000);
   });

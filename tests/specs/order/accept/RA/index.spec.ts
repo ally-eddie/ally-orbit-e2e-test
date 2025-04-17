@@ -2,11 +2,11 @@ import { test } from '@playwright/test';
 import { baseConfig } from '@configs/index';
 import { stringify, getRowColumnValueFromLatestBatchOrderFile } from '@utils/index';
 
-const customerOrderType = 'PS';
+const customerOrderType= 'RA';
 
-test.describe('拒絕訂單', () => {
-    test('可以拒絕訂單', async ({ page, context }) => {
-    const { config: { ordersQuery } } = require(`@configs/order/reject/${customerOrderType}`);        
+test.describe('接受訂單', () => {
+    test('可以接受訂單', async ({ page, context }) => {
+    const { config: { ordersQuery } } = require(`@configs/order/accept/${customerOrderType}`);        
     if (!ordersQuery.searchKey) {
       ordersQuery.searchKey = getRowColumnValueFromLatestBatchOrderFile(customerOrderType, '出貨單號');
     }
@@ -19,7 +19,7 @@ test.describe('拒絕訂單', () => {
     const allPages = context.pages();
     const orderPage = allPages[allPages.length - 1];
     await orderPage.bringToFront();    
-    await orderPage.locator('button:has-text("拒絕")').click();               
+    await orderPage.locator('button:has-text("接受")').click();           
     await orderPage.waitForTimeout(3000);    
   });
 });

@@ -2,11 +2,11 @@ import { test } from '@playwright/test';
 import { baseConfig } from '@configs/index';
 import { stringify, getRowColumnValueFromLatestBatchOrderFile } from '@utils/index';
 
-const customerOrderType = 'E';
+const customerOrderType= 'RA';
 
-test.describe('拒絕訂單', () => {
-  test('可以拒絕訂單', async ({ page }) => {
-    const { config: { query } } = require(`@configs/orders/rejectOrders/${customerOrderType}`);        
+test.describe('接受訂單', () => {
+  test('可以接受訂單', async ({ page }) => {
+    const { config: { query } } = require(`@configs/orders/acceptOrders/${customerOrderType}`);        
     if (!query.searchKey) {
       query.searchKey = getRowColumnValueFromLatestBatchOrderFile(customerOrderType, '出貨單號');
     }
@@ -16,7 +16,7 @@ test.describe('拒絕訂單', () => {
     await page.click('div.MuiBox-root button[type="submit"]');        
     await page.waitForSelector('div[data-rowindex="0"]', { state: 'visible' });
     await page.click('div[data-rowindex="0"] input[type="checkbox"]');    
-    await page.locator('button:has-text("拒絕")').click();
+    await page.locator('button:has-text("接單")').click();
     await page.waitForTimeout(3000);
   });
 });

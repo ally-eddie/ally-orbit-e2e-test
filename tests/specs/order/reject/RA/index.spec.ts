@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { baseConfig } from '@configs/index';
 import { stringify, getRowColumnValueFromLatestBatchOrderFile } from '@utils/index';
 
-const customerOrderType = 'PS';
+const customerOrderType= 'RA';
 
 test.describe('拒絕訂單', () => {
     test('可以拒絕訂單', async ({ page, context }) => {
