@@ -1,9 +1,10 @@
 import { Credentials, Organization } from '../types/config.types';
+require('dotenv').config();
 
 export const authConfig = {
   credentials: {
-    account: 'eddie@allytransport.com',
-    password: '1234qwer'
+    account: process.env.ACCOUNT,
+    password: process.env.PASSWORD
   } as Credentials,
   organization: {
     name: 'Ally Transport'

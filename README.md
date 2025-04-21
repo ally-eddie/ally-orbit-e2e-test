@@ -43,6 +43,11 @@ To customize the configuration for your tests, you can modify the `playwright.co
 - **Browser Options**: Configure the browsers and their settings.
 - **Environment Variables**: Set up environment variables for your tests.
 
+## Script 
+
+You can quickly generate all specs corresponding to the desired customerOrderType by running npm run addNewOrderType <customerOrderType>.
+After execution, go to tests/testFiles/batchOrders/createOrders/<customerOrderType> and replace the original order files.
+
 ## Running Playwright UI
 
 To run Playwright in UI mode, which provides a graphical interface for debugging and viewing test results, use the following command:
