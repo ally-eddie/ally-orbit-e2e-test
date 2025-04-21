@@ -35,7 +35,11 @@ This project is designed for end-to-end testing using Playwright. It includes va
   - `storageState/`
   - `**/Modified/**`
 
-## Customize Configuration
+## Customize Configuration Befoe Start
+
+set auth credential in .env 
+and set organization and dispatchCenter
+<pre lang="markdown"> ```ts export const authConfig = { credentials: { account: process.env.ACCOUNT, password: process.env.PASSWORD } as Credentials, organization: { name: 'Ally Transport' } as Organization, dispatchCenter: { name: '花仙子 DC' } }; ``` </pre>
 
 To customize the configuration for your tests, you can modify the `playwright.config.ts` file located in the root of your project. This file contains various settings that you can adjust to suit your testing needs, such as:
 
@@ -43,12 +47,7 @@ To customize the configuration for your tests, you can modify the `playwright.co
 - **Browser Options**: Configure the browsers and their settings.
 - **Environment Variables**: Set up environment variables for your tests.
 
-## Script 
-
-You can quickly generate all specs corresponding to the desired customerOrderType by running npm run addNewOrderType <customerOrderType>.
-After execution, go to tests/testFiles/batchOrders/createOrders/<customerOrderType> and replace the original order files.
-
-## Running Playwright UI
+## Start
 
 To run Playwright in UI mode, which provides a graphical interface for debugging and viewing test results, use the following command:
 
@@ -57,6 +56,16 @@ npx playwright test --ui
 ```
 
 This will open the Playwright UI, allowing you to interact with your tests in a more user-friendly manner.
+
+## Script 
+
+You can quickly generate all specs corresponding to the desired customerOrderType by running npm run addNewOrderType <customerOrderType>.
+After execution, go to tests/testFiles/batchOrders/createOrders/<customerOrderType> and replace the original order files.
+
+```bash
+npm run addNewOrderType <customerOrderType>
+```
+
 
 ## License
 
